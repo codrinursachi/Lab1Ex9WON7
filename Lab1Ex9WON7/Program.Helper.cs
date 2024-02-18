@@ -3,9 +3,9 @@
     static int[] ReadNumbers()
     {
         Console.WriteLine("Introduceti 2 numere pentru a le interschimba");
-        var numereRaw=Console.ReadLine().Split(" ");
+        var numereRaw=Console.ReadLine()?.Split(" ");
         var numere=new int[2];
-        if (numereRaw.Length == 2 &&
+        if (numereRaw?.Length == 2 &&
             int.TryParse(numereRaw[0], out numere[0]) &&
             int.TryParse(numereRaw[1], out numere[1]))
             return numere;
@@ -19,6 +19,6 @@
     }
     static void ShowNumbers(int[] numere)
     {
-        Console.WriteLine($"Numerele inversate sunt {numere[0]} si {numere[1]}");
+        Console.WriteLine($"Numerele interschimbate sunt {numere[0]} si {numere[1]}");
     }
 }
