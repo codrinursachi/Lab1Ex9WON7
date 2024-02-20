@@ -1,24 +1,24 @@
 ﻿partial class Program
 {
-    static int[] ReadNumbers()
+    static (int, int) ReadNumbers()
     {
         Console.WriteLine("Introduceti 2 numere pentru a le interschimba");
         var numereRaw=Console.ReadLine()?.Split(" ");
-        var numere=new int[2];
+        (int,int) numere;
         if (numereRaw?.Length == 2 &&
-            int.TryParse(numereRaw[0], out numere[0]) &&
-            int.TryParse(numereRaw[1], out numere[1]))
+            int.TryParse(numereRaw[0], out numere.Item1) &&
+            int.TryParse(numereRaw[1], out numere.Item2))
             return numere;
         Console.WriteLine("Nu ati introdus datele in format valid, mai incercati");
         return ReadNumbers();
     }
-    static int[] InterchangeNumbers(int[] numere)
+    static (int, int) InterchangeNumbers((int,int) numere)
     {
-        Array.Reverse(numere);
+        numere=(numere.Item2,numere.Item1);
         return numere;
     }
-    static void ShowNumbers(int[] numere)
+    static void ShowNumbers((int,int) numere)
     {
-        Console.WriteLine($"Numerele interschimbate sunt {numere[0]} si {numere[1]}");
+        Console.WriteLine($"Numerele interschimbate sunt {numere.Item1} si {numere.Item2}");
     }
 }
